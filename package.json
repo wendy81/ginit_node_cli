@@ -1,0 +1,39 @@
+{
+  "name": "ginit_node_cli",
+  "version": "1.0.0",
+  "description": "creat ginit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copy": "cp ./lib/index.js ./",
+    "stage":"babel ./lib/index.js --presets stage-3",
+    "start": "babel src -d lib && npm run copy &&  node index.js"
+  },
+  "keywords": [
+    "git",
+    "cli"
+  ],
+  "author": "wendy",
+  "license": "ISC",
+  "bin": {
+    "ginit": "./index.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^15.4.1",
+    "chalk": "^2.4.1",
+    "clear": "^0.1.0",
+    "clui": "^0.3.6",
+    "configstore": "^3.1.2",
+    "figlet": "^1.2.0",
+    "inquirer": "^5.2.0",
+    "lodash": "^4.17.10",
+    "minimist": "^1.2.0",
+    "simple-git": "^1.92.0",
+    "touch": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1"
+  }
+}
