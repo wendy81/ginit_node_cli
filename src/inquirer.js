@@ -2,8 +2,6 @@ const inquirer = require('inquirer');
 
 import files from './files';
 
-const argv = require('minimist')(process.argv.slice(2));
-
 export default {
     askGithubCredentials: () => {
         const questions = [{

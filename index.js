@@ -26,7 +26,7 @@ var clear = require('clear');
 var figlet = require('figlet');
 var pkg = require('../package.json');
 
-require('babel-polyfill');
+require('babel-polyfill'); //async await   need it
 
 var Configstore = require('configstore');
 var conf = new Configstore(pkg.name);
@@ -35,6 +35,9 @@ clear();
 console.log(chalk.yellow(figlet.textSync('Ginit', {
     horizontalLayout: 'full'
 })));
+
+var path = require('path');
+console.log(path.basename(process.cwd()));
 
 if (_files2.default.directoryExists('.git')) {
     console.log(chalk.red('Already a git repository!'));
@@ -107,56 +110,52 @@ var run = function () {
 
                     case 7:
                         url = _context2.sent;
-
-                        console.log(url);
-                        // Create .gitignore file
-                        _context2.next = 11;
+                        _context2.next = 10;
                         return _repo2.default.createGitignore();
 
-                    case 11:
-                        _context2.next = 13;
+                    case 10:
+                        _context2.next = 12;
                         return _repo2.default.setupRepo(url);
 
-                    case 13:
+                    case 12:
                         done = _context2.sent;
 
                         if (done) {
                             console.log(chalk.green('All done!'));
                         }
-                        _context2.next = 28;
+                        _context2.next = 27;
                         break;
 
-                    case 17:
-                        _context2.prev = 17;
+                    case 16:
+                        _context2.prev = 16;
                         _context2.t0 = _context2['catch'](0);
 
                         if (!_context2.t0) {
-                            _context2.next = 28;
+                            _context2.next = 27;
                             break;
                         }
 
                         _context2.t1 = _context2.t0.code;
-                        _context2.next = _context2.t1 === 401 ? 23 : _context2.t1 === 422 ? 25 : 27;
+                        _context2.next = _context2.t1 === 401 ? 22 : _context2.t1 === 422 ? 24 : 26;
                         break;
 
-                    case 23:
+                    case 22:
                         console.log(chalk.red('Couldn\'t log you in. Please provide correct credentials/token.'));
-                        return _context2.abrupt('break', 28);
+                        return _context2.abrupt('break', 27);
 
-                    case 25:
-                        console.log(chalk.red('There already exists a remote repository with the same name'));
+                    case 24:
+                        console.log(chalk.red('' + _context2.t0.stack));
+                        return _context2.abrupt('break', 27);
 
-                        return _context2.abrupt('break', 28);
-
-                    case 27:
+                    case 26:
                         console.log(_context2.t0);
 
-                    case 28:
+                    case 27:
                     case 'end':
                         return _context2.stop();
                 }
             }
-        }, _callee2, undefined, [[0, 17]]);
+        }, _callee2, undefined, [[0, 16]]);
     }));
 
     return function run() {

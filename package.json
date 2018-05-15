@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy": "cp ./lib/index.js ./",
-    "stage":"babel ./lib/index.js --presets stage-3",
     "start": "babel src -d lib && npm run copy &&  node index.js"
   },
   "keywords": [

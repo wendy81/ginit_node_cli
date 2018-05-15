@@ -5,7 +5,7 @@ const clear = require('clear');
 const figlet = require('figlet');
 const pkg = require('../package.json');
 
-require('babel-polyfill');
+require('babel-polyfill'); //async await   need it
 
 import files from './lib/files';
 import inquirer from './lib/inquirer';
@@ -53,7 +53,6 @@ const run = async() => {
 
         // Create remote repository
         const url = await repo.createRemoteRepo();
-        console.log(url)
         // Create .gitignore file
         await repo.createGitignore();
 
@@ -69,9 +68,7 @@ const run = async() => {
                     console.log(chalk.red('Couldn\'t log you in. Please provide correct credentials/token.'));
                     break;
                 case 422:
-                    console.log(chalk.red('There already exists a remote repository with the same name'));
-
-
+                    console.log(chalk.red(`${err.stack}`));
                     break;
                 default:
                     console.log(err);

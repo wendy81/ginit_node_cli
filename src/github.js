@@ -1,4 +1,4 @@
-require('babel-polyfill');
+require('babel-polyfill'); //async await   need it
 
 const octokit = require('@octokit/rest')();
 const Configstore = require('configstore');

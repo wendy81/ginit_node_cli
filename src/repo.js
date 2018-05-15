@@ -23,8 +23,6 @@ export default {
         status.start();
 
         try {
-        	// console.log(data)
-        	// console.log(github.repos.create(data))
             const response = await github.repos.create(data);
             return response.data.ssh_url;
         } catch (err) {
