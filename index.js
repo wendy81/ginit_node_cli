@@ -36,12 +36,9 @@ console.log(chalk.yellow(figlet.textSync('Ginit', {
     horizontalLayout: 'full'
 })));
 
-var path = require('path');
-console.log(path.basename(process.cwd()));
-
 if (_files2.default.directoryExists('.git')) {
     console.log(chalk.red('Already a git repository!'));
-    process.exit();
+    // process.exit()
 }
 
 var getGithubToken = function () {
@@ -144,7 +141,7 @@ var run = function () {
                         return _context2.abrupt('break', 27);
 
                     case 24:
-                        console.log(chalk.red('' + _context2.t0.stack));
+                        console.log(chalk.red('' + JSON.parse(_context2.t0.message).message));
                         return _context2.abrupt('break', 27);
 
                     case 26:

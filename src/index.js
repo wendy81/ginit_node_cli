@@ -26,7 +26,7 @@ console.log(
 
 if (files.directoryExists('.git')) {
     console.log(chalk.red('Already a git repository!'))
-    process.exit()
+    // process.exit()
 }
 
 const getGithubToken = async() => {
@@ -68,7 +68,7 @@ const run = async() => {
                     console.log(chalk.red('Couldn\'t log you in. Please provide correct credentials/token.'));
                     break;
                 case 422:
-                    console.log(chalk.red(`${err.stack}`));
+                    console.log(chalk.red(`${JSON.parse(err.message).message}`));
                     break;
                 default:
                     console.log(err);
